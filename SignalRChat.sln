@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalRChat", "SignalRChat\SignalRChat.csproj", "{ADC42442-4618-4F8D-896C-587E5576FD75}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalChatClient", "SignalChatClient\SignalChatClient.csproj", "{1297C261-C243-4264-8B05-ECF0C85701F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRWeb", "SignalRWeb\SignalRWeb.csproj", "{3E42CCD0-AF41-471F-A851-0C0DD53D6235}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADC42442-4618-4F8D-896C-587E5576FD75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC42442-4618-4F8D-896C-587E5576FD75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC42442-4618-4F8D-896C-587E5576FD75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC42442-4618-4F8D-896C-587E5576FD75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1297C261-C243-4264-8B05-ECF0C85701F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1297C261-C243-4264-8B05-ECF0C85701F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1297C261-C243-4264-8B05-ECF0C85701F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1297C261-C243-4264-8B05-ECF0C85701F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E42CCD0-AF41-471F-A851-0C0DD53D6235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E42CCD0-AF41-471F-A851-0C0DD53D6235}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E42CCD0-AF41-471F-A851-0C0DD53D6235}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E42CCD0-AF41-471F-A851-0C0DD53D6235}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDF9D85B-AD66-4891-967C-A1CC521463E5}
+	EndGlobalSection
+EndGlobal
