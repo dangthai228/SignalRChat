@@ -1,0 +1,23 @@
+﻿@page
+@{
+    ViewData["Title"] = "MessageSignalR";
+    Layout = "_Layout";
+}
+
+
+<div class="container">
+    <h1 class="h3 mb-3">Messages</h1>
+    <div class="card" style="height:500px;display:flex;overflow-y:scroll; flex-direction: column-reverse;">
+        <div class="list-group" id="messagesList">
+        </div>
+    </div>
+    <div class="flex-grow py-3 px-4 border-top align-bottom ">
+        <div class="input-group">
+            <input type="text" class="form-control" id="messageInput" placeholder="Type your message">
+            <button class="btn btn-primary" id="sendButton">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/Chat.js"></script>
