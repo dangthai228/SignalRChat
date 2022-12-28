@@ -1,0 +1,59 @@
+﻿@page "/Login"
+@model SignalRClient.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_Layout";
+}
+<form style="width:auto">
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input type="text" id="usernameInput" class="form-control" placeholder="Type your username" />
+        <label class="form-label">Username</label>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <input type="password" id="passwordInput" class="form-control" />
+        <label class="form-label">Password</label>
+    </div>
+
+
+
+    <!-- Submit button -->
+    <button type="button" onclick="login()" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+    <!-- Register buttons -->
+    <div class="text-center">
+        <p>Not a member? <a href="#!">Register</a></p>
+
+    </div>
+</form>
+<script>
+    function login() {
+        var userInput = document.getElementById('usernameInput').value;
+        var pwInput = document.getElementById('passwordInput').value;
+        var data = {
+            username: userInput,
+            password: pwInput
+        };
+        var msg="";
+       fetch('http://localhost:4001/user/authenticate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }).then((response) => 
+            response.json()
+        )
+            .then((data) => {
+                localStorage.setItem(userInput, data.token);
+                console.log('Success:', data);
+                window.location.href = 'https://localhost:44377/user/index?name='+data.username;
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+</script>
