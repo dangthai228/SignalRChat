@@ -36,23 +36,31 @@
             username: userInput,
             password: pwInput
         };
-        var msg="";
-       fetch('http://localhost:4001/user/authenticate', {
+        var status = "";
+        fetch('http://localhost:4001/user/authenticate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data),
-        }).then((response) => 
-            response.json()
-        )
-            .then((data) => {
-                localStorage.setItem(userInput, data.token);
-                console.log('Success:', data);
-                window.location.href = 'https://localhost:44377/user/index?name='+data.username;
-            })
+        }).then((response) => {
+            if (response.ok) {
+                status = response.status
+                return response.json();
+            }
+        }).then((data) => {
+            if (status == 200) {
+                localStorage.setItem(userInput, data.token)
+                console.log('Success:', data)
+                window.location.href = 'https://localhost:44377/user/index?name=' + data.username
+            }
+            else {
+                alert("Username hoặc Password không đúng  !!!")
+            }
+        })
             .catch((error) => {
-                console.error('Error:', error);
+                console.error('Error:', error)
+                alert("Server hiện đang bận !!!")
             });
     }
 
