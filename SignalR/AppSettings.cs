@@ -1,4 +1,4 @@
-﻿namespace SignalR.Helpers
+﻿namespace SignalR
 {
     public class AppSettings
     {

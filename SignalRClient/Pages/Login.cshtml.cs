@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Reflection.Metadata;
 
 namespace SignalRClient.Pages
@@ -8,7 +9,7 @@ namespace SignalRClient.Pages
     {
         public void OnGet()
         {
-
+            
         }
         
     }

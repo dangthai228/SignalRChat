@@ -10,6 +10,12 @@ namespace SignalR.Entities
         [JsonIgnore]
         public string Password { get; set; }
 
+        public User(int id, string username, string password)
+        {
+            Id = id;
+            Username = username;
+            Password = password;
+        }
     }
 
 }

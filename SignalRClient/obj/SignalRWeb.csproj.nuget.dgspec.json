@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Documents\\Github\\New folder\\SignalRChat\\SignalRClient\\SignalRWeb.csproj": {}
+    "C:\\Users\\Admin\\Documents\\Github\\SignalRChat\\SignalRChat\\SignalRClient\\SignalRWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Documents\\Github\\New folder\\SignalRChat\\SignalRClient\\SignalRWeb.csproj": {
+    "C:\\Users\\Admin\\Documents\\Github\\SignalRChat\\SignalRChat\\SignalRClient\\SignalRWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Documents\\Github\\New folder\\SignalRChat\\SignalRClient\\SignalRWeb.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Documents\\Github\\SignalRChat\\SignalRChat\\SignalRClient\\SignalRWeb.csproj",
         "projectName": "SignalRWeb",
-        "projectPath": "C:\\Users\\Admin\\Documents\\Github\\New folder\\SignalRChat\\SignalRClient\\SignalRWeb.csproj",
+        "projectPath": "C:\\Users\\Admin\\Documents\\Github\\SignalRChat\\SignalRChat\\SignalRClient\\SignalRWeb.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Documents\\Github\\New folder\\SignalRChat\\SignalRClient\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Documents\\Github\\SignalRChat\\SignalRChat\\SignalRClient\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

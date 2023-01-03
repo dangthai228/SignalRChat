@@ -142,3 +142,9 @@ C:\Users\Admin\Documents\Github\New folder\SignalRChat\SignalR\obj\Debug\netcore
 C:\Users\Admin\Documents\Github\New folder\SignalRChat\SignalR\obj\Debug\netcoreapp3.1\SignalR.dll
 C:\Users\Admin\Documents\Github\New folder\SignalRChat\SignalR\obj\Debug\netcoreapp3.1\SignalR.pdb
 C:\Users\Admin\Documents\Github\New folder\SignalRChat\SignalR\obj\Debug\netcoreapp3.1\SignalR.genruntimeconfig.cache
+C:\Users\Admin\Documents\Github\SignalRChat\SignalRChat\SignalR\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\Admin\Documents\Github\SignalRChat\SignalRChat\SignalR\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\Admin\Documents\Github\SignalRChat\SignalRChat\SignalR\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\Admin\Documents\Github\SignalRChat\SignalRChat\SignalR\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\Admin\Documents\Github\SignalRChat\SignalRChat\SignalR\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Admin\Documents\Github\SignalRChat\SignalRChat\SignalR\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

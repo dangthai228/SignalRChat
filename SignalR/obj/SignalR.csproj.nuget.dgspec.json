@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Documents\\Github\\New folder\\SignalRChat\\SignalR\\SignalR.csproj": {}
+    "C:\\Users\\Admin\\Documents\\Github\\SignalRChat\\SignalRChat\\SignalR\\SignalR.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Documents\\Github\\New folder\\SignalRChat\\SignalR\\SignalR.csproj": {
+    "C:\\Users\\Admin\\Documents\\Github\\SignalRChat\\SignalRChat\\SignalR\\SignalR.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Documents\\Github\\New folder\\SignalRChat\\SignalR\\SignalR.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Documents\\Github\\SignalRChat\\SignalRChat\\SignalR\\SignalR.csproj",
         "projectName": "SignalR",
-        "projectPath": "C:\\Users\\Admin\\Documents\\Github\\New folder\\SignalRChat\\SignalR\\SignalR.csproj",
+        "projectPath": "C:\\Users\\Admin\\Documents\\Github\\SignalRChat\\SignalRChat\\SignalR\\SignalR.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Documents\\Github\\New folder\\SignalRChat\\SignalR\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Documents\\Github\\SignalRChat\\SignalRChat\\SignalR\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -47,6 +47,10 @@
             "Microsoft.AspNetCore.SignalR.Core": {
               "target": "Package",
               "version": "[1.1.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

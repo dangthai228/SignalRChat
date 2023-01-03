@@ -4,14 +4,27 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SignalR.Hubs;
-using SignalR.Helpers;
 using SignalR.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
+using System.Linq;
+using System;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using SignalR.Entities;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace SignalR
 {
     public class Startup
     {
+        
         //  https://localhost:44347
         public Startup(IConfiguration configuration)
         {
@@ -23,7 +36,8 @@ namespace SignalR
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
+            
+            services.AddSignalR();
             services.AddRazorPages();
             services.AddCors(options =>
             {
@@ -36,24 +50,54 @@ namespace SignalR
                             .AllowCredentials();
                     });
             });
-            services.AddSignalR();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(o =>
+                {
+                    o.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            var accessToken = context.Request.Query["access_token"];
+
+                            // If the request is for our hub...
+                            var path = context.HttpContext.Request.Path;
+                            if (!string.IsNullOrEmpty(accessToken) )
+                            {
+                                // Read the token out of the query string
+                                context.Token = accessToken;
+                            }
+                            return Task.CompletedTask;
+                        }
+                    };
+                    o.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["AppSettings:Secret"])),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ClockSkew = TimeSpan.Zero
+
+                    };
+                });
+            
             services.AddControllers();
            
             // configure strongly typed settings object
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-
+            
             // configure DI for application services
             services.AddScoped<IUserService, UserServices>();
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseRouting();
             app.UseCors();
-            app.UseMiddleware<JwtMiddleware>();
+            app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
+            //app.UseMiddleware<JwtMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -63,4 +107,6 @@ namespace SignalR
             });
         }
     }
+
+    
 }

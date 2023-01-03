@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SignalR.Helpers;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using SignalR.Entities;
+
 using SignalR.Models;
 using SignalR.Services;
-
+using System.Security.Claims;
 
 namespace SignalR.Controllers
 {
@@ -12,13 +15,13 @@ namespace SignalR.Controllers
     public class UserController : ControllerBase
     {
         private IUserService _userService;
-
         public UserController(IUserService userService)
         {
             _userService = userService;
+            
         }
 
-        [Authorize]
+        
         [HttpGet]
         public IActionResult getAll()
         { 
@@ -32,7 +35,6 @@ namespace SignalR.Controllers
 
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
-
             return Ok(response);
         }
     }

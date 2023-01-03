@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gf1E4B/jmDhmwPzCWEfvTCudFsBWFEI2k2SAE2c+2jIp0zNZQROrywsXUB5wgippLlXZeCFizkfpY/ngFRzWUQ==",
+  "dgSpecHash": "bCnuQwckoKmtjpj0xUrRS7nBvLUed3oPI36zmwVHO5lCQpATVvvlOtf6hWciaYSvhk1TDJoqqnb1tBCYct6j0w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Documents\\Github\\New folder\\SignalRChat\\SignalRClient\\SignalRWeb.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Documents\\Github\\SignalRChat\\SignalRChat\\SignalRClient\\SignalRWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\3.1.0\\microsoft.aspnetcore.connections.abstractions.3.1.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.http.connections.client\\3.1.0\\microsoft.aspnetcore.http.connections.client.3.1.0.nupkg.sha512",
