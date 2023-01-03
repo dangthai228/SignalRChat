@@ -45,15 +45,16 @@ connection.on("Message", function (user, message) {
 
 //receive message from specify user 
 connection.on("SpecifyMessage", function (message) {
-        list.innerHTML = list.innerHTML + "<div class='chat-message-left'>"
-            + "<div class='card-body'>"
-            + "<h6 class='card-subtitle float-left'>" + sendto + "</h6><br>"
-            + "<p class='card-text float-left'>"
-            + "<div class='flex-shrink-1 bg-light rounded'>" + `${message}` + "</div>"
-            + "</p>"
-            + "</div > "
-            + "</div>";
-    
+    if (sendto != null && sendto != "") { 
+    list.innerHTML = list.innerHTML + "<div class='chat-message-left'>"
+        + "<div class='card-body'>"
+        + "<h6 class='card-subtitle float-left'>" + sendto + "</h6><br>"
+        + "<p class='card-text float-left'>"
+        + "<div class='flex-shrink-1 bg-light rounded'>" + `${message}` + "</div>"
+        + "</p>"
+        + "</div > "
+        + "</div>";
+    }
 });
 
 // receive listfriend 
@@ -69,6 +70,10 @@ connection.on("FriendList", function (Friends) {
             }
         });
     });
+});
+connection.on("StatusMessage", function (user,status) {
+    var trangthai = document.getElementById("status_" + user);
+    trangthai.innerHTML = status;
 });
 //a friend online
 connection.on("goOnline", function (name) {
@@ -92,6 +97,12 @@ async function start() {
         await connection.start();
         console.log("SignalR Connected.");
         await connection.invoke("getFriend", name);
+        console.log("SignalR getFriend done !");
+        LtFriends.forEach(item => {
+             connection.invoke("GetFriendStatus", item);
+        });
+        sendto = LtFriends[0];
+        LoadName.innerHTML = sendto;
     } catch (err) {
         console.log(err);
     }
