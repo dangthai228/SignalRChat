@@ -5,6 +5,9 @@ using SignalR.Entities;
 using SignalR.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.WebSockets;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
 
@@ -27,15 +30,19 @@ namespace SignalR.Hubs
         }
         public Task SendPrivateMessage( string receiveUser, string message)
         {
-            return Clients.User(receiveUser).SendAsync("Message", message);
+            Console.WriteLine("Send to " + receiveUser);
+            return Clients.User(receiveUser).SendAsync("SpecifyMessage", message);
         }
-        public override async Task OnConnectedAsync()
+        public override  Task OnConnectedAsync()
         {
-            Console.WriteLine(Context.ConnectionId);
-            await Clients.All.SendAsync("Message","",$"{Context.User.Identity.Name} joined.");
-            await base.OnConnectedAsync();
+            Clients.Others.SendAsync("goOnline", Context.User.Identity.Name);
+            return base.OnConnectedAsync();
         }
 
-
+        public override Task OnDisconnectedAsync(Exception exception)
+        {
+            Clients.Others.SendAsync("goOffline", Context.User.Identity.Name);
+            return base.OnDisconnectedAsync(exception);
+        }
     }
 }

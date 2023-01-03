@@ -5,20 +5,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SignalR.Hubs;
 using SignalR.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using System.Linq;
 using System;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using SignalR.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Linq;
-using System.IdentityModel.Tokens.Jwt;
+
 using System.Text;
+using System.Security.Claims;
 
 namespace SignalR
 {
@@ -58,12 +53,9 @@ namespace SignalR
                         OnMessageReceived = context =>
                         {
                             var accessToken = context.Request.Query["access_token"];
-
-                            // If the request is for our hub...
                             var path = context.HttpContext.Request.Path;
                             if (!string.IsNullOrEmpty(accessToken) )
                             {
-                                // Read the token out of the query string
                                 context.Token = accessToken;
                             }
                             return Task.CompletedTask;
@@ -79,7 +71,6 @@ namespace SignalR
 
                     };
                 });
-            
             services.AddControllers();
            
             // configure strongly typed settings object
@@ -87,7 +78,7 @@ namespace SignalR
             // configure DI for application services
             services.AddScoped<IUserService, UserServices>();
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-
+            services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -97,7 +88,6 @@ namespace SignalR
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-            //app.UseMiddleware<JwtMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
@@ -108,5 +98,11 @@ namespace SignalR
         }
     }
 
-    
+    internal class NameUserIdProvider : IUserIdProvider
+    {
+        public string GetUserId(HubConnectionContext connection)
+        {
+            return connection.User?.FindFirst(ClaimTypes.Name)?.Value;
+        }
+    }
 }
